@@ -54,7 +54,6 @@ class Tpl {
         'debug' => false,
         'tpl_dir' => 'templates/',
         'cache_dir' => 'cache/',
-        'tpl_ext' => 'html',
         'base_url' => '',
         'php_enabled' => false,
         'auto_escape' => true,
@@ -276,7 +275,7 @@ class Tpl {
         // absolute path
         if ($template[0] == '/') {
             $templateDirectory = $templateBasedir;
-            $templateFilepath = $templateDirectory . $templateName . '.' . $this->config['tpl_ext'];
+            $templateFilepath = $templateDirectory . $templateName;
             $parsedTemplateFilepath = $this->config['cache_dir'] . $templateName . "." . md5($templateDirectory . serialize($this->config['checksum'])) . '.rtpl.php';
             // For check templates are exists
             if (file_exists($templateFilepath)) {
@@ -285,7 +284,7 @@ class Tpl {
         } else {
             foreach($templateDirectories as $templateDirectory) {
                 $templateDirectory .= $templateBasedir;
-                $templateFilepath = $templateDirectory . $templateName . '.' . $this->config['tpl_ext'];
+                $templateFilepath = $templateDirectory . $templateName;
                 $parsedTemplateFilepath = $this->config['cache_dir'] . $templateName . "." . md5($templateDirectory . serialize($this->config['checksum'])) . '.rtpl.php';
 
                 // For check templates are exists
